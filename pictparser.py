@@ -20,8 +20,9 @@ for l in out:
         continue
     # start of file
     if re.match('data \'PICT\'', l):
-        m = re.search('\d\d\d\d', l)
+        m = re.search('\(\d*\)', l)
         num = m.group(0)
+        num = num.translate(None, '()')
         print "open "+num
         working = open("res"+num+".pct", "wb")
         for a in range(0, 512):
